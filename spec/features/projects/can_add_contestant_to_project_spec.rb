@@ -15,16 +15,20 @@ RSpec.describe "projects show page", type: :feature do
                                       hometown: "Denver",
                                       years_of_experience: "8")
       tuxedo = contestant_2.projects.create!(name: "Upholstery Tuxedo", material: "Couch", challenge_id: furniture_challenge.id)
+  
 
       visit "/projects/#{tuxedo.id}"
 
       expect(page).to have_content("New Contestant")
 
-      fill_in 'contestant_id', with: "#{contestant_2.id}"
+      fill_in 'name', with: "Shauna"
+      fill_in 'age', with: "38"
+      fill_in 'hometown', with: "Westminster"
+      fill_in 'years_of_experience', with: "10"
       click_button "Add Contestant To Project"
 
       expect(current_path).to eq("/projects/#{tuxedo.id}")
-      expect(page).to have_content("Number of Contestants: 2")
+      expect(page).to have_content("Number of Contestants: 3")
     end
   end
 end

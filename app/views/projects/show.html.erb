@@ -8,9 +8,15 @@
 <br>
 
 <h3>New Contestant</h3>
-<%= form_tag "#{@project.id}/contestant_projects" do%>
-  <%= label_tag :contestant_id %>
-  <%= text_field_tag :contestant_id %>
+<%= form_tag "/#{@project.id}/contestant_projects", method: :post do %>
+  <%= label_tag "name" %>
+  <%= text_field_tag :name %><br>
+  <%= label_tag "age" %>
+  <%= text_field_tag :age %><br>
+  <%= label_tag "hometown" %>
+  <%= text_field_tag :hometown %><br>
+  <%= label_tag "years of experience" %>
+  <%= text_field_tag :years_of_experience %><br>
   <br>
   <%= submit_tag "Add Contestant To Project" %>
 <% end %>
